@@ -7,7 +7,7 @@
   <title>Servlet</title>
 </head>
 <body>
-<h1>servletTest</h1>
+<h1>servletTest的</h1>
 <a href="servlet/TestServlet">TestGet</a>
 <form action="servlet/TestServlet" method="post">
   <input type="submit" value="post方式">

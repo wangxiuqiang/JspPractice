@@ -13,8 +13,9 @@ public class TestServlet extends HttpServlet {
         // TODO Auto-generated method stub
         System.out.println("用get方式请求servlet");// 控制台打印输出
         PrintWriter out=response.getWriter();
-        response.setContentType("text/html;charset=utf-8");
-        out.println("<strong>get de servlet</strong><hr>");
+        response.setContentType("text/html;charset=utf-8;");
+        response.setCharacterEncoding("UTF-8");
+        out.println("<strong>get 的 servlet</strong><hr>");
     }
 
     @Override
