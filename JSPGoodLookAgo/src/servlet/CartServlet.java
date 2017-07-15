@@ -45,24 +45,46 @@ public class CartServlet extends HttpServlet {
 				}
 			}
 			if (action.equals("show")) {
-				// showCart(request,response);
+				request.getRequestDispatcher("/cart.jsp").forward(request, response);
+			}
+			if(action.equals("delete")){
+				if(deleteFromCart(request,response)){
+					request.getRequestDispatcher("/cart.jsp").forward(request, response);
+				}
+				else{
+					request.getRequestDispatcher("/cart.jsp").forward(request, response);
+				}
+				
 			}
 		}
 	}
 
+	private boolean deleteFromCart(HttpServletRequest request, HttpServletResponse response)
+	{
+		String id = request.getParameter("id");
+		Cart cart = (Cart)request.getSession().getAttribute("cart");
+	    Items item = idao.getItemsById(Integer.parseInt(id));
+	    if(cart.removeGoodsFromCart(item))
+	    {
+	    	return true;
+	    }
+	    else
+	    {
+	    	return false;
+	    }
+	}
 	public boolean addToCart(HttpServletRequest request, HttpServletResponse response) {
 		String id = request.getParameter("id");
 		String number = request.getParameter("num");
 		Items item = idao.getItemsById(Integer.parseInt(id));
 		if (request.getSession().getAttribute("cart") == null) {
 			Cart cart = new Cart();
-            request.getSession().setAttribute("cart",cart);
+			request.getSession().setAttribute("cart", cart);
 		}
-		Cart cart = (Cart)request.getSession().getAttribute("cart");
-		if(cart.addGoodsInCart(item, Integer.parseInt(number))){
+		Cart cart = (Cart) request.getSession().getAttribute("cart");
+		if (cart.addGoodsInCart(item, Integer.parseInt(number))) {
 			return true;
-		}
-		else {
+		} else {
 			return false;
 		}
 	}
