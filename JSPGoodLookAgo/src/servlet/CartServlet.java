@@ -12,9 +12,7 @@ import entity.Cart;
 import entity.Items;
 import jdk.nashorn.internal.ir.RuntimeNode.Request;
 
-/**
- * Servlet implementation class CartServlet
- */
+
 @WebServlet("/CartServlet")
 public class CartServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -88,5 +86,7 @@ public class CartServlet extends HttpServlet {
 			return false;
 		}
 	}
-
+	public void init() throws ServletException {
+		// Put your code here
+	}
 }

@@ -56,7 +56,7 @@
 							Items i = it.next();
 				%>
 				<tr name="products" id="product_id_1">
-					<td><img src="images/<%=i.getPicture()%>" /><a
+					<td><img src="images/<%=i.getPicture()%>" width="60" height="50"/><a
 						href=""><%=i.getName()%></a></td>
 					<td ><%=i.getPrice()%></td>
 					<td id="price_id_1"><span><%=i.getPrice() * goods.get(i)%></span>
